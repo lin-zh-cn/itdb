@@ -158,6 +158,6 @@ Starting development server at http://0:8000/
 Quit the server with CTRL-BREAK.
 -------------------------------------------------------------------
 后台：http://127.0.0.1:8000/admin/
-前天：http://127.0.0.1:8000/
+前台：http://127.0.0.1:8000/
 admin / admin123
 
