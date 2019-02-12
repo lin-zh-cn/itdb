@@ -9,7 +9,7 @@ python-3.4.4.amd64.msi
 
 python虚拟环境
 pip install virtualenvwrapper-win -i https://pypi.doubanio.com/simple/
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------
 创建数据库：itdb_v2
 itdb_v2.settings
 DATABASES = {
@@ -22,19 +22,10 @@ DATABASES = {
         'PASSWORD':'root',
     }
 }
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Microsoft Windows [版本 10.0.17134.523]
-(c) 2018 Microsoft Corporation。保留所有权利。
-
-C:\Windows\system32>python -V
-'python' 不是内部或外部命令，也不是可运行的程序
-或批处理文件。
-
+-------------------------------------------------------------------
 C:\Windows\system32>cd /d C:\Python34\Scripts
-
 C:\Python34\Scripts>pip -V
 pip 7.1.2 from c:\python34\lib\site-packages (python 3.4)
-
 C:\Python34\Scripts>pip install virtualenvwrapper-win -i https://pypi.doubanio.com/simple/
 Collecting virtualenvwrapper-win
   Downloading https://pypi.doubanio.com/packages/f5/23/4cba98733b9122219ce67177d745e4984b524b867cf3728eaa807ea21919/virtualenvwrapper-win-1.2.5.tar.gz
@@ -46,14 +37,12 @@ Installing collected packages: virtualenv, virtualenvwrapper-win
 Successfully installed virtualenv-16.4.0 virtualenvwrapper-win-1.2.5
 You are using pip version 7.1.2, however version 19.0.2 is available.
 You should consider upgrading via the 'python -m pip install --upgrade pip' command.
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
+-------------------------------------------------------------------
 mkvirtualenv -p C:\Python34\python.exe itdb
 workon itdb
 
 (itdb) C:\Users\JJX-Lin>python -V
 Python 3.4.4
-
 (itdb) C:\Users\JJX-Lin>pip -V
 pip 19.0.2 from c:\python27\evns\itdb\lib\site-packages\pip (python 3.4)
 
@@ -67,7 +56,7 @@ idna==2.8
 requests==2.21.0 
 urllib3==1.24.1
 -------------------------------------------------------------------
-python manage.py makemigrations assets django.contrib.admin django.contrib.auth
+python manage.py makemigrations
 
 Migrations for 'assets':
   0001_initial.py:
@@ -120,7 +109,7 @@ Migrations for 'assets':
 
 Process finished with exit code 0
 -------------------------------------------------------------------
-python manage.py migrate assets
+python manage.py migrate
 
 Operations to perform:
   Apply all migrations: assets, admin, contenttypes, auth, sessions
@@ -142,7 +131,7 @@ Running migrations:
   
 Process finished with exit code 0
 -------------------------------------------------------------------
-因assets_userprofile表有外键关联，需要现在assets_officeplace插入一行数据：
+因assets_userprofile表有外键关联，需要先在assets_officeplace插入一行数据：
 INSERT INTO `itasv2`.`assets_officeplace`(`id`, `office_place`) VALUES (1, '中国总部');
 否则报错：
 django.db.utils.IntegrityError: (1452, 'Cannot add or update a child row: a foreign key constraint fails (`itasv2`.`assets_userprofile`, CONSTRAINT `assets_userpro_office_place_id_238ad
@@ -171,7 +160,4 @@ Quit the server with CTRL-BREAK.
 后台：http://127.0.0.1:8000/admin/
 前天：http://127.0.0.1:8000/
 admin / admin123
-
-
-
 
