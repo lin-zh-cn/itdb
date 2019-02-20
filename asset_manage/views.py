@@ -295,7 +295,7 @@ from django.http import FileResponse
 class Download_template(View):
     def get(self,request,file_name,*args,**kwargs):
 
-        with open("/www/itdb_v2/static/excel/%s" %file_name,'rb') as file:
+        with open("/www/itdb/static/excel/%s" %file_name,'rb') as file:
             response = FileResponse(file)
             response['Content-Type']='application/octet-stream'
             response['Content-Disposition']='attachment;filename="%s"' %file_name
