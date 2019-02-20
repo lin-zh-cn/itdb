@@ -251,7 +251,8 @@ class CheckInfo(models.Model):
         return self.title
 
 class AssetInfo(models.Model):
-    asset_id = models.CharField(max_length=164, verbose_name="资产编号",primary_key=True)
+    # asset_id = models.CharField(max_length=164, verbose_name="资产编号",primary_key=True)
+    asset_id = models.CharField(max_length=164, verbose_name="资产编号")
     sn = models.CharField(max_length=128, verbose_name="资产序列号（S/N）")
     mac_addr = models.CharField(max_length=32, verbose_name='MAC地址', null=True, blank=True)
     level = models.ForeignKey(Level, verbose_name='分类级别')

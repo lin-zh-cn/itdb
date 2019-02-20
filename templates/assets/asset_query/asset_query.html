@@ -14,13 +14,19 @@
                     </form>
                     <span class="input-group-btn">
                         <button id="search_button" class="btn btn-default ">
-                                    查询
+                            查询
                             <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </span>
+                    <span class="input-group-btn" style="left: 20px;">
+                        <button id="show_all_button" class="btn btn-default ">
+                            显示全部
                         </button>
                     </span>
                 </div>
             </div>
         </div>
+
     </div>
 
 
@@ -38,20 +44,35 @@
                 <div class="dataTables_wrapper">
                     <table id="asset_list_table" class="table  table-striped table-hover table-bordered dataTable" style="margin-left: 0px;">
                         <thead id="asset_table_head">
-                            <!--
-                            <tr role="row" id="asset_table_head">
-                                <th class="sorting_asc_disabled" >资产属性</th>
-                                <th class="sorting_asc_disabled" >资产编号</th>
-                                <th class="sorting_asc_disabled" >资产SN</th>
-                                <th class="sorting_asc_disabled" >资产类别</th>
-                                <th class="sorting_asc_disabled" >资产型号</th>
-                                <th class="sorting_asc_disabled" >资产状态</th>
-                                <th class="sorting_asc_disabled" >使用人</th>
-                                <th class="sorting_asc_disabled" >办公地点</th>
-                                <th class="sorting_asc_disabled" >更新时间</th>
-                                <th class="sorting_asc_disabled" >备注</th>
-                            </tr>
-                            -->
+{#                            <!--#}
+{#                            <tr role="row" id="asset_table_head">#}
+{#                                <th class="sorting_asc_disabled" >资产属性</th>#}
+{#                                <th class="sorting_asc_disabled" >资产编号</th>#}
+{#                                <th class="sorting_asc_disabled" >资产SN</th>#}
+{#                                <th class="sorting_asc_disabled" >资产类别</th>#}
+{#                                <th class="sorting_asc_disabled" >资产型号</th>#}
+{#                                <th class="sorting_asc_disabled" >资产状态</th>#}
+{#                                <th class="sorting_asc_disabled" >使用人</th>#}
+{#                                <th class="sorting_asc_disabled" >办公地点</th>#}
+{#                                <th class="sorting_asc_disabled" >更新时间</th>#}
+{#                                <th class="sorting_asc_disabled" >备注</th>#}
+{#                            </tr>#}
+{##}
+{#                            {% for item in query_data %}#}
+{#                            <tr role="row" id="asset_table_head">#}
+{#                                <td class="sorting_asc_disabled" >{{ item.asset_attr_id__asset_attr }}</td>#}
+{#                                <td class="sorting_asc_disabled" >{{ item.asset_id }}</td>#}
+{#                                <td class="sorting_asc_disabled" >{{ item.sn }}</td>#}
+{#                                <td class="sorting_asc_disabled" >{{ item.asset_model_id__asset_model }}</td>#}
+{#                                <td class="sorting_asc_disabled" >{{ item.device_model_id__model_name }}</td>#}
+{#                                <td class="sorting_asc_disabled" >{{ item.asset_status_id__asset_status }}</td>#}
+{#                                <td class="sorting_asc_disabled" >{{ item.user_name_id__username }}</td>#}
+{#                                <td class="sorting_asc_disabled" >{{ item.office_place_id__office_place }}</td>#}
+{#                                <td class="sorting_asc_disabled" >{{ item.update_time }}</td>#}
+{#                                <td class="sorting_asc_disabled" >{{ item.remark }}</td>#}
+{#                            </tr>#}
+{#                            {% endfor %}#}
+{#                            -->#}
                         </thead>
 
 

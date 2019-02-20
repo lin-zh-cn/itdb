@@ -40,15 +40,8 @@ class Asset_query(View):
     @method_decorator(login_required)
     def get(self,request,*args,**kwargs):
         search_form = AssetQuery()
-        return render(request, 'assets/asset_query/asset_query.html', {'form':search_form,"stitle":"资产查询"})
 
-
-class Asset_query_json(View):
-    @method_decorator(login_required)
-    def post(self, request,user_name, *args, **kwargs):
         response = BaseResponse()
-        # query_content = request.body.decode("utf-8")
-        # print(user_name)
         try:
             query_table_config = assets_config.query_table_config
             # 需要从数据库中取得字段
@@ -56,8 +49,63 @@ class Asset_query_json(View):
             for item in query_table_config:
                 if item['display']:
                     field_list.append(item['field'])
+            # 查询数据
+            query_data = list(AssetInfo.objects.all().values(*field_list))
+
+        except Exception as e:
+            response.status = False
+            response.message = str(e)
+        # return HttpResponse(json.dumps(response.__dict__))
+        return render(request, 'assets/asset_query/asset_query.html', {'form':search_form,"stitle":"资产查询",'query_data':query_data,})
+
+class Asset_query_all_json(View):
+    @method_decorator(login_required)
+    def post(self,request,*args,**kwargs):
+        print("all-1")
+        search_form = AssetQuery()
+        response = BaseResponse()
+        try:
+            query_table_config = assets_config.query_table_config
+            # 需要从数据库中取得字段
+            field_list = []
+            for item in query_table_config:
+                if item['display']:
+                    field_list.append(item['field'])
+            # 查询数据
+            query_data = list(AssetInfo.objects.all().values(*field_list))
+            #将数据json序列化
+            query_data_json = json.dumps(query_data,cls=CJsonEncoder)
+            #返回个前端的数据
+            data_back = {
+                "config":query_table_config,
+                'query_data':query_data_json
+            }
+            data_back_json = json.dumps(data_back)
+            response.data = data_back_json
+        except Exception as e:
+            response.status = False
+            response.message = str(e)
+        return HttpResponse(json.dumps(response.__dict__))
+
+class Asset_query_json(View):
+    @method_decorator(login_required)
+    def post(self, request,field_value, *args, **kwargs):
+        response = BaseResponse()
+        query_content = request.body.decode("utf-8")
+        print("field-2")
+        try:
+            query_table_config = assets_config.query_table_config
+            # 需要从数据库中取得字段
+            field_list = []
+            for item in query_table_config:
+                if item['display']:
+                    field_list.append(item['field'])
+
             #查询数据
-            query_data = list(AssetInfo.objects.filter(user_name_id__username=user_name).values(*field_list))
+            for field_name in field_list:
+                query_data = list(AssetInfo.objects.filter(**{field_name+"__icontains":field_value}).values(*field_list))
+                if query_data :
+                    break
             #将数据json序列化
             query_data_json = json.dumps(query_data,cls=CJsonEncoder)
             #返回个前端的数据

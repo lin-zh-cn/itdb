@@ -22,6 +22,6 @@ app_name = 'assets'
 urlpatterns = [
     url(r'^index/', views.index,name='index'),
     url(r'^asset_query/', views.Asset_query.as_view(), name='asset_query'),
-    url(r'^asset_query_json/(?P<user_name>(.+))/$', views.Asset_query_json.as_view()),
-
+    url(r'^asset_query_json/all/$', views.Asset_query_all_json.as_view()),
+    url(r'^asset_query_json/(?P<field_value>(.+))/$', views.Asset_query_json.as_view()),
 ]
